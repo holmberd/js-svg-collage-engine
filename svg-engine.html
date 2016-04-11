@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>SVG test</title>
+		<style>
+
+		body{ background-color: ivory; padding:10px; }
+
+		</style>
+		<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+		<script type="text/javascript" src="svg-engine.js"></script>
+	</head>
+
+	<body>
+		<div id="myCollage">
+		<!--<svg id="mySVG" width="200" height="200"></svg>-->
+		</div>
+
+	<script type="text/javascript">
+
+		var testUrls = ["https://i.scdn.co/image/825577311dc943da21181e2e57d6c8b0be8c9e14", 
+						"https://i.scdn.co/image/9870764379e6b51566b88fb147c1305a71521e2b", 
+						"https://i.scdn.co/image/bcc904628a3a13516ae5ca7a916707b09a2fa651", 
+						"https://i.scdn.co/image/dd7a517e80a46477ffc585ff8d7ae06762ea146b"]; 
+		
+		var testUrlsMany = ["https://i.scdn.co/image/825577311dc943da21181e2e57d6c8b0be8c9e14", "https://i.scdn.co/image/9870764379e6b51566b88fb147c1305a71521e2b", "https://i.scdn.co/image/bcc904628a3a13516ae5ca7a916707b09a2fa651", "https://i.scdn.co/image/dd7a517e80a46477ffc585ff8d7ae06762ea146b", "https://i.scdn.co/image/fb5bf70413af17edae091532e9f0dc442af852cf", "https://i.scdn.co/image/fb5bf70413af17edae091532e9f0dc442af852cf", "https://i.scdn.co/image/b251660ff4f59508e50301ce04749679ccdea5ac", "https://i.scdn.co/image/f2f7177791098b6e94459c654e5aadc6d2d24415", "https://i.scdn.co/image/9b83faad11f748ff3795bbc71381db1315d7cdd4", "https://i.scdn.co/image/d61f265c4d9f32a88d0cc5c935fd046bee355961", "https://i.scdn.co/image/e2fd9b842aa7480d3c0cf9b48567bb7760bc1cb8", "https://i.scdn.co/image/cc6fb3aa033b3894ca1133b42afc512fca439330", "https://i.scdn.co/image/62bf2fc5770365d4b27ed92386e803fe585c0697", "https://i.scdn.co/image/179ee572d6f393191e69854a0da84c392671a460", "https://i.scdn.co/image/91301654c8cc38d48fb80611f74dcdfc2ac97391", "https://i.scdn.co/image/7b479b4abd278ccd902b683b66e93ea73307e509", "https://i.scdn.co/image/a4e05bbcb612782e878e80be39b26b9c22a1c99c", "https://i.scdn.co/image/89f1214327e99dfdb598e67c0dc4d15f00c591b2", "https://i.scdn.co/image/9f54c729371b4ad95a84d2d95bcc7a2dc5e77bb4", "https://i.scdn.co/image/3f25b25582dbe1cc0506464315700d6dcdd52c95", "https://i.scdn.co/image/9b0cc7aeb5ed1e7bf41d8b94470c675ecefdf395", "https://i.scdn.co/image/10d2a3831034ec6db4e453ee4b712a1a9ba39fed", "https://i.scdn.co/image/7b479b4abd278ccd902b683b66e93ea73307e509", "https://i.scdn.co/image/8185fd53e4ff41efe44cf62d123aff22afc45b31", "https://i.scdn.co/image/a8bb4f9778362e91dad66a60e75efcf18059149f", "https://i.scdn.co/image/6aea8dd9cc2720ffead7edb131322e83d03dda42", "https://i.scdn.co/image/07dcf7d72d63e94b79669d08633be49ee44e49d9", "https://i.scdn.co/image/3621c3914448387c6dc4b3865fcd787f39c87b19", "https://i.scdn.co/image/5ebe21c6f62591e42e90ed7004b898b69ab3241b", "https://i.scdn.co/image/cd359a99c64e56b75ac707d1b259da376f014eb5", "https://i.scdn.co/image/a7ffa746eb8dd3499d501d9a86c7631837c1fbd8", "https://i.scdn.co/image/2b4173a9c909952a12314ea86216f5ab6cf36be8", "https://i.scdn.co/image/2b4173a9c909952a12314ea86216f5ab6cf36be8", "https://i.scdn.co/image/07dcf7d72d63e94b79669d08633be49ee44e49d9", "https://i.scdn.co/image/6aea8dd9cc2720ffead7edb131322e83d03dda42", "https://i.scdn.co/image/3f25b25582dbe1cc0506464315700d6dcdd52c95", "https://i.scdn.co/image/9b0cc7aeb5ed1e7bf41d8b94470c675ecefdf395", "https://i.scdn.co/image/10d2a3831034ec6db4e453ee4b712a1a9ba39fed", "https://i.scdn.co/image/91301654c8cc38d48fb80611f74dcdfc2ac97391", "https://i.scdn.co/image/6749129742311b233b63963a68458f1436630bdd", "https://i.scdn.co/image/ac890497a0164ddbef7d1f547ab692a848739b77", "https://i.scdn.co/image/8185fd53e4ff41efe44cf62d123aff22afc45b31", "https://i.scdn.co/image/a8bb4f9778362e91dad66a60e75efcf18059149f", "https://i.scdn.co/image/2b4173a9c909952a12314ea86216f5ab6cf36be8", "https://i.scdn.co/image/7b479b4abd278ccd902b683b66e93ea73307e509", "https://i.scdn.co/image/4acc25079f2692c7fb7e2f8f5da2d419682c8e51", "https://i.scdn.co/image/2b4173a9c909952a12314ea86216f5ab6cf36be8", "https://i.scdn.co/image/2b4173a9c909952a12314ea86216f5ab6cf36be8", "https://i.scdn.co/image/6af82258371d51d42a574aa4124cbfa079813635", "https://i.scdn.co/image/9f54c729371b4ad95a84d2d95bcc7a2dc5e77bb4", "https://i.scdn.co/image/28b8e18b7e58e64c47e01e306702c230895b0dc9", "https://i.scdn.co/image/e9a8393d06c0893c197e94949633d0bd52a9225b", "https://i.scdn.co/image/6f6ce1545203dc388fcbd5e31c244bbae3624bd2", "https://i.scdn.co/image/c58f0a58c750c144348bd93930272f27f9ff8929", "https://i.scdn.co/image/f6ffa70f15b722d591f3f000bb8d54f1a6d04c7e", "https://i.scdn.co/image/df28a0f234b6da5c7b57c11cea73c7be0ffd7fc5", "https://i.scdn.co/image/bf92af1aeef14a199c08ac4b3d1e3da832e8b58c", "https://i.scdn.co/image/93d5861f57043cc7e7e2a74071c4215056c36f66", "https://i.scdn.co/image/a7ffa746eb8dd3499d501d9a86c7631837c1fbd8", "https://i.scdn.co/image/2b4173a9c909952a12314ea86216f5ab6cf36be8", "https://i.scdn.co/image/2b4173a9c909952a12314ea86216f5ab6cf36be8", "https://i.scdn.co/image/6af82258371d51d42a574aa4124cbfa079813635", "https://i.scdn.co/image/9f54c729371b4ad95a84d2d95bcc7a2dc5e77bb4", "https://i.scdn.co/image/28b8e18b7e58e64c47e01e306702c230895b0dc9", "https://i.scdn.co/image/e9a8393d06c0893c197e94949633d0bd52a9225b", "https://i.scdn.co/image/6f6ce1545203dc388fcbd5e31c244bbae3624bd2", "https://i.scdn.co/image/c58f0a58c750c144348bd93930272f27f9ff8929", "https://i.scdn.co/image/f6ffa70f15b722d591f3f000bb8d54f1a6d04c7e", "https://i.scdn.co/image/df28a0f234b6da5c7b57c11cea73c7be0ffd7fc5", "https://i.scdn.co/image/bf92af1aeef14a199c08ac4b3d1e3da832e8b58c", "https://i.scdn.co/image/93d5861f57043cc7e7e2a74071c4215056c36f66", "https://i.scdn.co/image/57e043cacc415a21fc7a2163310ec04115555666", "https://i.scdn.co/image/757cd3027d8b726e1affb6518d2e9b56c33b6e52", "https://i.scdn.co/image/967cff336132f8467e40335b89944b6f329bf88b", "https://i.scdn.co/image/a5537edb4e1dcc7a05daa438e42e68124b3b6dd0", "https://i.scdn.co/image/e1a9fc9280c2f81606d1dba56ff7b3022cec51e4", "https://i.scdn.co/image/c03fff0e5131dccfeba3a41986f0106675218c2e", "https://i.scdn.co/image/6af82258371d51d42a574aa4124cbfa079813635", "https://i.scdn.co/image/28c575cd5773c0de97f662fcb76d05e2a744ea79", "https://i.scdn.co/image/8663baf32418fd815dfe23cd0f37f2bf7f7c8e33", "https://i.scdn.co/image/e077254aa166197732809804d59b36afdf943ec5", "https://i.scdn.co/image/5f0bcc9f459ed956b20cfd95dd9dbb5e429cddae", "https://i.scdn.co/image/0eaa766b1364d61edf2206878a1e03a4fc3c721a", "https://i.scdn.co/image/0b39bda1dda9bf38c9b4cb89c134c96b1ad2073f", "https://i.scdn.co/image/a0f39d205989a7d78a520f9c18bd1f241fd7cd24", "https://i.scdn.co/image/9a14c7ffa0fc03cec265e8ff75882bee0ef92d0c", "https://i.scdn.co/image/0b39bda1dda9bf38c9b4cb89c134c96b1ad2073f", "https://i.scdn.co/image/394e6ede0e3978d675b4506c3dbb64cbf05ae92f", "https://i.scdn.co/image/5c1cd4aed7ca4b51bc4e64d5cf4664b32cbc0a6a", "https://i.scdn.co/image/25e3df43931e97bd4e9237cd47c6172808b7fd5b", "https://i.scdn.co/image/195d8359a37e94b0c1c710d1072afd8f06a1c178", "https://i.scdn.co/image/029b0516fe15c3e9b21e959c23e1030b3deca523", "https://i.scdn.co/image/522b085244a1ef91e6afb449d2167c2c935ed9bb", "https://i.scdn.co/image/95933f9ad0769b3324d99d557684f6642ec47220", "https://i.scdn.co/image/9ea914423cb8c1cd85caa1a1322fe92404b05ba9", "https://i.scdn.co/image/e160ed21f55a07d6c8cefa1967b7c31b561e9854"];
+
+		var dag = new SvgEngine(testUrlsMany, "#myCollage", 64, 300);
+		dag.init(function(e, f){
+			console.log("SVG ID: ", e, f);
+			var image = dag.svgToImage("mySVG");
+			console.log(image);
+			document.getElementById("myCollage").appendChild(image);
+
+		});
+
+	</script>
+
+
+	</body>
+	</html>
