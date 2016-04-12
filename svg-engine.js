@@ -96,6 +96,7 @@ SvgEngine.prototype.imgBase64ToSvg = function(data_base64_array) {
 	svg.setAttribute('id','mySVG'); //set SVG ID
 	svg.setAttribute("width", this.svg_size);
 	svg.setAttribute("height", this.svg_size);
+	svg.setAttribute("style", "stroke-width: 0px; background-color: black;"); //set SVG background color
 	svg.setAttribute("viewBox", "0 0 " + this.viewBox_width + " " + this.viewBox_height);
 	
 	//programmatically building the SVG from base64 dataUri images array
