@@ -25,7 +25,7 @@ var SvgEngine = function(image_urls, div_id, image_size, svg_size){
 	this.viewBox_width = this.square_num * this.image_size;
 	this.viewBox_height = this.square_num * this.image_size;
 
-	this.logo = "data:image/png;base64,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";
+	//this.logo = "data:image/png;base64, ... ";
 	//check if num is square, otherwise return closest lower square
 	function getSquare(num){
 		function isSquare (n) {
@@ -104,8 +104,9 @@ SvgEngine.prototype.imgBase64ToSvg = function(data_base64_array) {
 	for (var i = 0, l = data_base64_array.length; i < l; i++){
 
 		image = document.createElementNS("http://www.w3.org/2000/svg", 'image');
-		if (i===(l-1)) image.setAttributeNS("http://www.w3.org/1999/xlink", "href", this.logo);
-		else image.setAttributeNS("http://www.w3.org/1999/xlink", "href", "data:image/jpeg;base64," + data_base64_array[i]);
+		//if (i===(l-1)) image.setAttributeNS("http://www.w3.org/1999/xlink", "href", this.logo);
+		//else image.setAttributeNS("http://www.w3.org/1999/xlink", "href", "data:image/jpeg;base64," + data_base64_array[i]);
+		image.setAttributeNS("http://www.w3.org/1999/xlink", "href", "data:image/jpeg;base64," + data_base64_array[i]);
 		image.setAttributeNS(null, "x", rows);
 		image.setAttributeNS(null, "y", cols);
 		image.setAttributeNS(null, "width", this.image_size);
